@@ -1,0 +1,27 @@
+Some experiments with PyParsing
+-------------------------------
+
+The idea is to write Logic Dojo's parser with PyParsing.
+
+And maybe also implement a parser for Propositional Logic in a WebSite with Django for a very simple Online Tableau Prover.
+
+
+--------------------------------
+I am using a Fedora 13 computer.
+
+
+10/03/2011:
+
+[adolfo@adolfo pyparsing]$ python -V
+Python 2.6.4
+
+[adolfo@adolfo pyparsing]$ uname -a
+Linux adolfo.netbook 2.6.34.8-68.fc13.i686 #1 SMP Thu Feb 17 15:00:46 UTC 2011 i686 i686 i386 GNU/Linux
+
+
+$ sudo easy_install pyparsing
+...
+Best match:pyparsing 1.5.5
+...
+
+
