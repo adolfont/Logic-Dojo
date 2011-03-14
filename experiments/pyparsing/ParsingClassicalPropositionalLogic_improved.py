@@ -160,10 +160,12 @@ This is the end...
 
 # open issues/problems
 
-# why moving asList up to the Operand class does not work???
+# why moving "asList()" up to the Operand class does not work???
 
 # A&B&C  ===>  ['&', 'A', 'B', 'C']
 # would it better to be ['&', 'A', ['&', 'B', 'C']]  --> EXPONENTIAL GROWTH???
+
+# how can I remove "if (isinstance(result[0],str)):"?
 
 
 
