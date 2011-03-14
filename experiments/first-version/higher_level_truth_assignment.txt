@@ -1,0 +1,17 @@
+Higher level
+
+
+One of the simplest tests possible
+
+Specification
+
+v: function Formulas->{0,1}
+
+Test
+
+assert (v(A&B)==1)
+
+Answer
+
+v(A)=1
+v(B)=1
