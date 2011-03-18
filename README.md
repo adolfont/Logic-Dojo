@@ -6,7 +6,7 @@ Logic Dojo Tool
 Objective
 ---------
 
-* To have a tool for helping to run activities similar to coding dojos for logic teaching.
+* To have a tool for helping to run activities similar to [coding dojos](http://codingdojo.org/) for logic teaching.
 
 
 Philosophy
@@ -24,7 +24,7 @@ Ideas
 Authors
 -------
 
-* Adolfo Neto
+* [Adolfo Neto](http://adolfoneto.wikidot.com)
 
 
 
