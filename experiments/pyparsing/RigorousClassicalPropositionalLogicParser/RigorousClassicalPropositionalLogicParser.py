@@ -1,17 +1,6 @@
-# A rigorous parser for Classical Propositional Logic
+# Tests for the rigorous parser for Classical Propositional Logic
 # Author: Adolfo Neto
 # 16/03/2011
-#
-# This parser for Classical Propositional Logic follows exactly the rules in the Silva-Finger-Melo book: 
-# "Logic for Computing" ("Logica para Computacao" in Portuguese)
-# Link for the book: http://bit.ly/fqbyF4
-#
-# Important notes: 
-
-# In this parser, parenthesis cannot be omitted!
-# We have four connectives: "!" (negation, unary) , "&" (conjuntion, binary), "|" (disjunction, binary),  "->" (implication, binary)
-
-# This parser uses the excellent Paul McGuire's "pyparsing" module for Python: http://pyparsing.wikispaces.com/
 
 
 from pyparsing import (alphanums, alphas, delimitedList, Forward, Group,
@@ -19,7 +8,6 @@ from pyparsing import (alphanums, alphas, delimitedList, Forward, Group,
 	 ParseException, ParseSyntaxException, Suppress, Word)
 
 ParserElement.enablePackrat()
-
 
 class RigorousClassicalPropositionalLogicParser:
 
@@ -72,50 +60,9 @@ class Formula:
 	def __str__(self):
 
 		if self.connective!=None:
-			subf = ""
-			for i in self.subformulas:
-				subf = subf + str(i) + " "
-			return "("+ str(self.connective) + " " + subf + ")"
+			subformulas_as_string = " ".join(map(str,self.subformulas))
+			return "("+ str(self.connective) + " " + subformulas_as_string + ")"
 		else:
 			return self.subformulas
 
-parser = RigorousClassicalPropositionalLogicParser()
-
-#print parser.parse("A")
-#print parser.parse("A1")
-#print parser.parse("!A")
-#print parser.parse("!!A12")
-#print parser.parse("(A&B1)")
-#print parser.parse("((A&B1)&C23)")
-#print parser.parse("((A|B1)->!C23)")
-
-
-def parseFormula(text):
-	f = Formula(parser.parse(text).asList()[0])
-#	print "texto da formula:", texto 
-#	print "resultado do parsing: ", parser.parse(texto)
-#	print f
-	return f
-	
-print(parseFormula("(A&B)"))
-
-
-import unittest
- 
-class CPL_SFM06_TestCase(unittest.TestCase):
-	def testAtomicFormula(self):
-		self.assertEquals("A1", str(parseFormula("A1")))
-		self.assertEquals(None, parseFormula("A1").connective)
-	def testUnaryComplexityTwoFormula(self):
-		self.assertEquals("(! A1 )", str(parseFormula("!A1")))
-		self.assertEquals("!", parseFormula("!A1").connective)
-	def testUnaryComplexityThreeFormula(self):
-		self.assertEquals("(! (! A12 ) )", str(parseFormula("!!A12")))
-		self.assertEquals("!", parseFormula("!!A12").connective)
-	def testBinaryComplexityThreeFormula(self):
-		self.assertEquals("(& A B )", str(parseFormula("(A&B)")))
-		self.assertEquals("&", parseFormula("(A&B)").connective)
- 
-if __name__ == '__main__':
-	unittest.main()
 
