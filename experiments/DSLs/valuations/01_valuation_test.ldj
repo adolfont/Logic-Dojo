@@ -1,0 +1,27 @@
+
+#Define a valuation such that
+
+# p&q is false
+assertEquals(0, v(p&q))
+
+#p|q is true
+assertEquals(1, v(p|q))
+
+#p-> is false
+assertEquals(0, v(p->q))
+
+#Instructions
+
+#1. Create a file name "01_valuation_solution.ldj"
+
+# Run python logicdojo.py 01_valuation_test.ldj
+# See it fail
+
+#2. Define a valuation
+## Commands:
+## v = Valuation
+## v(<atom>)=<truth-value>
+## <truth-value>=0|1
+
+# Run python logicdojo.py 01_valuation_test.ldj
+# See it succeed

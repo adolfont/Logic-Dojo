@@ -1,0 +1,4 @@
+v = Valuation
+
+v(p)=1
+v(q)=0
