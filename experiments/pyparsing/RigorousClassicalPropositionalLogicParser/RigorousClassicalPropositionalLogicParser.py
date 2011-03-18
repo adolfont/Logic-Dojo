@@ -39,7 +39,7 @@ class RigorousClassicalPropositionalLogicParser:
 			return  result
 
 		except (ParseException, ParseSyntaxException) as err:
-			print("Syntax error:\n{0.line}\n{1}^".format(err, " " * (err.column - 1)))
+#			print("Syntax error:\n{0.line}\n{1}^".format(err, " " * (err.column - 1)))
 			return ""
 		
 
