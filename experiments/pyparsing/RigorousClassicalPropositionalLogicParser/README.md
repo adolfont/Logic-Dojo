@@ -1,7 +1,8 @@
 Rigorous Classical Propositional Logic Parser
 =============================================
 
-
+Motivation
+----------
 
 Most parsers for Classical Propositional Logic allow:
 
