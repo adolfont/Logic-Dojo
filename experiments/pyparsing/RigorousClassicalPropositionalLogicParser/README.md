@@ -1,6 +1,8 @@
 Rigorous Classical Propositional Logic Parser
 =============================================
 
+
+
 Most parsers for Classical Propositional Logic allow:
 * the optional use of parenthesis
 * the nary use of binary connectives
@@ -21,3 +23,9 @@ Dependencies
 ------------
 
 This parser uses the excellent Paul McGuire's "pyparsing" module for Python: http://pyparsing.wikispaces.com/
+
+
+Author
+-------
+
+Adolfo Neto
