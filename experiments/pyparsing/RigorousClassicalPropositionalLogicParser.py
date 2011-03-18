@@ -1,4 +1,4 @@
-# A parser for Classical Propositional Logic
+# A rigorous parser for Classical Propositional Logic
 # Author: Adolfo Neto
 # 16/03/2011
 #
@@ -21,7 +21,7 @@ from pyparsing import (alphanums, alphas, delimitedList, Forward, Group,
 ParserElement.enablePackrat()
 
 
-class CPL_Parser:
+class RigorousClassicalPropositionalLogicParser:
 
 	def __init__(self):
 		self.left_parenthesis = Suppress("(")
@@ -53,6 +53,7 @@ class CPL_Parser:
 		except (ParseException, ParseSyntaxException) as err:
 			print("Syntax error:\n{0.line}\n{1}^".format(err, " " * (err.column - 1)))
 			return ""
+		
 
 
 class Formula:
@@ -78,7 +79,7 @@ class Formula:
 		else:
 			return self.subformulas
 
-parser = CPL_Parser()
+parser = RigorousClassicalPropositionalLogicParser()
 
 #print parser.parse("A")
 #print parser.parse("A1")
@@ -96,7 +97,7 @@ def parseFormula(text):
 #	print f
 	return f
 	
-#print parseFormula("(A&B)")
+print(parseFormula("(A&B)"))
 
 
 import unittest
@@ -112,7 +113,7 @@ class CPL_SFM06_TestCase(unittest.TestCase):
 		self.assertEquals("(! (! A12 ) )", str(parseFormula("!!A12")))
 		self.assertEquals("!", parseFormula("!!A12").connective)
 	def testBinaryComplexityThreeFormula(self):
-		self.assertEquals("(& A B)", str(parseFormula("(A&B)")))
+		self.assertEquals("(& A B )", str(parseFormula("(A&B)")))
 		self.assertEquals("&", parseFormula("(A&B)").connective)
  
 if __name__ == '__main__':
