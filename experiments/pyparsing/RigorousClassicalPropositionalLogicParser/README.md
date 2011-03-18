@@ -10,7 +10,7 @@ Most parsers for Classical Propositional Logic allow:
 
 This is not the case with this parser. This parser for Classical Propositional Logic follows exactly the rules in the Silva-Finger-Melo book: 
 
-* "Logic for Computing" ("Logica para Computacao" in Portuguese). Link for the book: http://bit.ly/fqbyF4
+* [Logic for Computing](http://bit.ly/fqbyF4) ("Logica para Computacao" in Portuguese).
 
 
 Important notes
@@ -24,7 +24,7 @@ We have four connectives: "!" (negation, unary) , "&" (conjuntion, binary), "|" 
 Dependencies
 ------------
 
-This parser uses the excellent Paul McGuire's "pyparsing" module for Python: http://pyparsing.wikispaces.com/
+This parser uses the excellent Paul McGuire's "pyparsing" module for Python: (http://pyparsing.wikispaces.com/)
 
 
 Author
