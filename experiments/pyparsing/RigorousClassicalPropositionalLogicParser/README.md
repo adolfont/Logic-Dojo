@@ -24,7 +24,7 @@ We have four connectives: "!" (negation, unary) , "&" (conjuntion, binary), "|" 
 Dependencies
 ------------
 
-This parser uses the excellent Paul McGuire's "pyparsing" module for Python: (http://pyparsing.wikispaces.com/)
+This parser uses the excellent [Paul McGuire's "pyparsing" module for Python](http://pyparsing.wikispaces.com/)
 
 
 Author
