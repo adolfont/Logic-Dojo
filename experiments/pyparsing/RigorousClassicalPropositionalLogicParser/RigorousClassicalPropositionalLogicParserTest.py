@@ -1,4 +1,4 @@
-# Tests for A rigorous parser for Classical Propositional Logic
+# Tests for a rigorous parser for Classical Propositional Logic
 # Author: Adolfo Neto
 # 16/03/2011
 #
