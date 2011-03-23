@@ -31,5 +31,8 @@ Dependencies
 
 This parser uses the excellent [Paul McGuire's "pyparsing" module for Python.](http://pyparsing.wikispaces.com/)
 
+* Python 2.6.4.
+
+
 
 
