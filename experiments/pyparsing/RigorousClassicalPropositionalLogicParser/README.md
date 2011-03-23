@@ -1,6 +1,8 @@
 A "Rigorous" Parser for Classical Propositional Logic
-Author: [Adolfo Neto](http://twitter.com/adolfont)
 =====================================================
+
+Author: [Adolfo Neto](http://twitter.com/adolfont)
+
 
 Motivation
 ----------
