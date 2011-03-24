@@ -10,12 +10,17 @@ class Formula_TestCase(unittest.TestCase):
 	def setUp(self):
 		self.formulaFactory = FormulaFactory()
 		self.anAtomicFormula = self.formulaFactory.createAtomicFormula("A")
-		self.anUnaryFormula = self.formulaFactory.createUnaryFormula("!",self.anAtomicFormula)
-		self.aComplexityThreeUnaryFormula = self.formulaFactory.createUnaryFormula("!",self.anUnaryFormula)
-		self.aBinaryFormula = self.formulaFactory.createBinaryFormula("&",self.anAtomicFormula, self.anAtomicFormula)
+		self.anUnaryFormula = self.formulaFactory.createUnaryFormula("!",
+								self.anAtomicFormula)
+		self.aComplexityThreeUnaryFormula = self.formulaFactory.createUnaryFormula(
+								"!",self.anUnaryFormula)
+		self.aBinaryFormula = self.formulaFactory.createBinaryFormula(
+								"&",self.anAtomicFormula, self.anAtomicFormula)
 		self.anotherAtomicFormula = self.formulaFactory.createAtomicFormula("B")
-		self.anotherBinaryFormula = self.formulaFactory.createBinaryFormula("&",self.anAtomicFormula, self.anotherAtomicFormula)
-		self.aComplexitySixFormula = self.formulaFactory.createBinaryFormula("->", self.anUnaryFormula, self.anotherBinaryFormula)
+		self.anotherBinaryFormula = self.formulaFactory.createBinaryFormula(
+								"&",self.anAtomicFormula, self.anotherAtomicFormula)
+		self.aComplexitySixFormula = self.formulaFactory.createBinaryFormula(
+								"->", self.anUnaryFormula, self.anotherBinaryFormula)
 
 
 	def testAtomicFormula_getConnective(self):

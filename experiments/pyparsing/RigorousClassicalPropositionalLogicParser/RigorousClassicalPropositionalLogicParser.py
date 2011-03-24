@@ -7,7 +7,7 @@ from pyparsing import (alphanums, alphas, delimitedList, Forward, Group,
 	 Keyword, Literal, opAssoc, operatorPrecedence, ParserElement,
 	 ParseException, ParseSyntaxException, Suppress, Word)
 
-from Formula import Formula
+from Formula import *
 
 ParserElement.enablePackrat()
 

@@ -3,7 +3,8 @@
 # 16/03/2011
 #
 
-from RigorousClassicalPropositionalLogicParser import RigorousClassicalPropositionalLogicParser, Formula
+from RigorousClassicalPropositionalLogicParser import RigorousClassicalPropositionalLogicParser
+from Formula import *
 import unittest
  
 class RigorousClassicalPropositionalLogicParser_TestCase(unittest.TestCase):
@@ -11,44 +12,62 @@ class RigorousClassicalPropositionalLogicParser_TestCase(unittest.TestCase):
 		self.parser = RigorousClassicalPropositionalLogicParser()
 
 	def parseFormula(self,text):
-		f = Formula(self.parser.parse(text).asList()[0])
+		ff = FormulaFactory()
+		f = ff.createFormulaFromParserResult(self.parser.parse(text).asList()[0])
 		return f
 
-	def testAtomicFormula(self):
+	def test_createAtomicFormula_toString(self):
 		self.assertEquals("A1", str(self.parseFormula("A1")))
-		self.assertEquals(None, self.parseFormula("A1").connective)
 
-	def testUnaryComplexityTwoFormula(self):
-		self.assertEquals("(! A1)", str(self.parseFormula("!A1")))
-		self.assertEquals("!", self.parseFormula("!A1").connective)
+	def test_createAtomicFormula_getConnective(self):
+		self.assertEquals(None, self.parseFormula("A1").getConnective())
 
-	def testUnaryComplexityThreeFormula(self):
-		self.assertEquals("(! (! A12))", str(self.parseFormula("!!A12")))
-		self.assertEquals("!", self.parseFormula("!!A12").connective)
+	def test_createUnaryComplexityTwoFormula_toString(self):
+		self.assertEquals("!A1", str(self.parseFormula("!A1")))
+#		self.assertEquals("(! A1)", str(self.parseFormula("!A1")))
 
-	def testBinaryComplexityThreeFormula(self):
-		self.assertEquals("(& A B)", str(self.parseFormula("(A&B)")))
-		self.assertEquals("&", self.parseFormula("(A&B)").connective)
+	def test_createUnaryComplexityTwoFormula_getConnective(self):
+		self.assertEquals("!", self.parseFormula("!A1").getConnective())
 
-	def testBinaryComplexityFiveFormula(self):
-		self.assertEquals("(& (& A B) C23)", str(self.parseFormula("( (A&B)&C23)")))
-		self.assertEquals("&", self.parseFormula("( (A&B)&C23)").connective)
+	def test_createUnaryComplexityThreeFormula_toString(self):
+		self.assertEquals("!!A12", str(self.parseFormula("!!A12")))
+#		self.assertEquals("(! (! A12))", str(self.parseFormula("!!A12")))
 
-	def testBinaryComplexityFiveFormula(self):
-		self.assertEquals("(| (& A B) (! C23))", str(self.parseFormula("( (A&B)|!C23)")))
-		self.assertEquals("|", self.parseFormula("( (A&B)|!C23)").connective)
+	def test_createUnaryComplexityThreeFormula_getConnective(self):
+		self.assertEquals("!", self.parseFormula("!!A12").getConnective())
 
-	def testWrongAtomicFormulaWithParentheses(self):
+	def test_createBinaryComplexityThreeFormula_toString(self):
+		self.assertEquals("(A&B)", str(self.parseFormula("(A&B)")))
+#		self.assertEquals("(& A B)", str(self.parseFormula("(A&B)")))
+
+	def test_createBinaryComplexityThreeFormula_getConnective(self):
+		self.assertEquals("&", self.parseFormula("(A&B)").getConnective())
+
+	def test_createBinaryComplexityFiveFormula_toString(self):
+		self.assertEquals("((A&B)&C23)", str(self.parseFormula("( (A&B)&C23)")))
+#		self.assertEquals("(& (& A B) C23)", str(self.parseFormula("( (A&B)&C23)")))
+
+	def test_createBinaryComplexityFiveFormula_getConnective(self):
+		self.assertEquals("&", self.parseFormula("( (A&B)&C23)").getConnective())
+
+	def test_createBinaryComplexitySixFormula_toString(self):
+		self.assertEquals("((A&B)|!C23)", str(self.parseFormula("( (A&B)|!C23)")))
+#		self.assertEquals("(| (& A B) (! C23))", str(self.parseFormula("( (A&B)|!C23)")))
+
+	def test_createBinaryComplexitySixFormula_getConnective(self):
+		self.assertEquals("|", self.parseFormula("( (A&B)|!C23)").getConnective())
+
+	def test_WrongAtomicFormulaWithParentheses(self):
 		self.assertRaises(AttributeError,self.parseFormula,"(A)")
 
-	def testWrongUnaryFormulaWithExtraParentheses(self):
+	def test_WrongUnaryFormulaWithExtraParentheses(self):
 		self.assertRaises(AttributeError,self.parseFormula,"(!A)")
 		self.assertRaises(AttributeError,self.parseFormula,"!(A)")
 
-	def testWrongBinaryFormulaWithExtraParentheses(self):
+	def test_WrongBinaryFormulaWithExtraParentheses(self):
 		self.assertRaises(AttributeError,self.parseFormula,"((A&B))")
  
-	def testWrongBinaryFormulaWithoutParentheses(self):
+	def test_WrongBinaryFormulaWithoutParentheses(self):
 		self.assertRaises(AttributeError,self.parseFormula,"A&B")
 
 

@@ -3,28 +3,27 @@
 # 16/03/2011
 
 class Formula:
-	def __init__(self,parserResult):
-
-		if (isinstance(parserResult,str)):	
-			self.connective=None
-			self.subformulas=parserResult
-		elif (len(parserResult)==2):
-			self.connective=parserResult[0]
-			self.subformulas=[Formula(parserResult[1])]
-		else:
-			self.connective=parserResult[1]
-			self.subformulas=[Formula(parserResult[0]),Formula(parserResult[2])]
-
-	def __str__(self):
-		if self.connective!=None:
-			subformulas_as_string = " ".join(map(str,self.subformulas))
-			return "("+ str(self.connective) + " " + subformulas_as_string + ")"
-		else:
-			return self.subformulas
-
-	def getConnective(self):
-		return "BLA"
-
+#	def __init__(self,parserResult):
+#		if (isinstance(parserResult,str)):	
+#			self.connective=None
+#			self.subformulas=parserResult
+#		elif (len(parserResult)==2):
+#			self.connective=parserResult[0]
+#			self.subformulas=[Formula(parserResult[1])]
+#		else:
+#			self.connective=parserResult[1]
+#			self.subformulas=[Formula(parserResult[0]),Formula(parserResult[2])]
+#
+#	def __str__(self):
+#		if self.connective!=None:
+#			subformulas_as_string = " ".join(map(str,self.subformulas))
+#			return "("+ str(self.connective) + " " + subformulas_as_string + ")"
+#		else:
+#			return self.subformulas
+#
+#	def getConnective(self):
+#		return "BLA"
+	pass
 
 class AtomicFormula(Formula):
 	def __init__(self, atomString):
@@ -65,4 +64,14 @@ class FormulaFactory:
 
 	def createBinaryFormula(self, connective, leftSubformula, rightSubformula):
 		return BinaryFormula(connective, leftSubformula, rightSubformula)
-		
+
+	def createFormulaFromParserResult(self, parserResult):
+		if (isinstance(parserResult,str)):	
+			return self.createAtomicFormula(parserResult)
+		elif (len(parserResult)==2):
+			connective=parserResult[0]
+			return self.createUnaryFormula(connective, self.createFormulaFromParserResult(parserResult[1]))
+		else:
+			connective=parserResult[1]
+			return self.createBinaryFormula(connective, self.createFormulaFromParserResult(parserResult[0]),
+					self.createFormulaFromParserResult(parserResult[2]))
