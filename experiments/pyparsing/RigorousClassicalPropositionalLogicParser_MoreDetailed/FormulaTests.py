@@ -9,7 +9,7 @@ import unittest
 class Formula_TestCase(unittest.TestCase):
 	def setUp(self):
 		self.formulaFactory = ClassicalPropositionalLogicFormulaFactory()
-		self.cpl = self.formulaFactory.logic
+		self.logic = self.formulaFactory.logic
 		self.anAtomicFormula = self.formulaFactory.createAtom("A")
 		self.anUnaryFormula = self.formulaFactory.createNegation(self.anAtomicFormula)
 		self.aSizeThreeUnaryFormula = self.formulaFactory.createNegation(self.anUnaryFormula)
@@ -26,25 +26,25 @@ class Formula_TestCase(unittest.TestCase):
 		self.assertEquals("A",str(self.anAtomicFormula))
 
 	def testSizeTwoUnaryFormula_getConnective(self):
-		self.assertEquals(self.cpl.NOT,self.anUnaryFormula.getConnective())
+		self.assertEquals(self.logic.NOT,self.anUnaryFormula.getConnective())
 
 	def testSizeTwoUnaryFormula_toString(self):
 		self.assertEquals("!A",str(self.anUnaryFormula))
 
 	def testSizeThreeUnaryFormula_getConnective(self):
-		self.assertEquals(self.cpl.NOT,self.aSizeThreeUnaryFormula.getConnective())
+		self.assertEquals(self.logic.NOT,self.aSizeThreeUnaryFormula.getConnective())
 
 	def testSizeThreeUnaryFormula_toString(self):
 		self.assertEquals("!!A",str(self.aSizeThreeUnaryFormula))
 
 	def testSizeThreeBinaryFormula_getConnective(self):
-		self.assertEquals(self.cpl.AND,self.aBinaryFormula.getConnective())
+		self.assertEquals(self.logic.AND,self.aBinaryFormula.getConnective())
 		
 	def testSizeThreeBinaryFormula_toString(self):
 		self.assertEquals("(A&A)",str(self.aBinaryFormula))
 
 	def testSizeSixBinaryFormula_getConnective(self):
-		self.assertEquals(self.cpl.IMPLIES,self.aSizeSixFormula.getConnective())
+		self.assertEquals(self.logic.IMPLIES,self.aSizeSixFormula.getConnective())
 		
 	def testSizeSixBinaryFormula_toString(self):
 		self.assertEquals("(!A->(A&B))",str(self.aSizeSixFormula))

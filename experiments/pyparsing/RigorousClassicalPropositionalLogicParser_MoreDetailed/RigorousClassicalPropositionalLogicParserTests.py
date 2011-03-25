@@ -4,7 +4,7 @@
 #
 
 from RigorousClassicalPropositionalLogicParser import RigorousClassicalPropositionalLogicParser
-from Formula import *
+from FormulaFactory import *
 import unittest
  
 class RigorousClassicalPropositionalLogicParser_TestCase(unittest.TestCase):
@@ -24,35 +24,30 @@ class RigorousClassicalPropositionalLogicParser_TestCase(unittest.TestCase):
 
 	def test_createUnaryComplexityTwoFormula_toString(self):
 		self.assertEquals("!A1", str(self.parseFormula("!A1")))
-#		self.assertEquals("(! A1)", str(self.parseFormula("!A1")))
 
 	def test_createUnaryComplexityTwoFormula_getConnective(self):
 		self.assertEquals("!", self.parseFormula("!A1").getConnective())
 
 	def test_createUnaryComplexityThreeFormula_toString(self):
 		self.assertEquals("!!A12", str(self.parseFormula("!!A12")))
-#		self.assertEquals("(! (! A12))", str(self.parseFormula("!!A12")))
 
 	def test_createUnaryComplexityThreeFormula_getConnective(self):
 		self.assertEquals("!", self.parseFormula("!!A12").getConnective())
 
 	def test_createBinaryComplexityThreeFormula_toString(self):
 		self.assertEquals("(A&B)", str(self.parseFormula("(A&B)")))
-#		self.assertEquals("(& A B)", str(self.parseFormula("(A&B)")))
 
 	def test_createBinaryComplexityThreeFormula_getConnective(self):
 		self.assertEquals("&", self.parseFormula("(A&B)").getConnective())
 
 	def test_createBinaryComplexityFiveFormula_toString(self):
 		self.assertEquals("((A&B)&C23)", str(self.parseFormula("( (A&B)&C23)")))
-#		self.assertEquals("(& (& A B) C23)", str(self.parseFormula("( (A&B)&C23)")))
 
 	def test_createBinaryComplexityFiveFormula_getConnective(self):
 		self.assertEquals("&", self.parseFormula("( (A&B)&C23)").getConnective())
 
 	def test_createBinaryComplexitySixFormula_toString(self):
 		self.assertEquals("((A&B)|!C23)", str(self.parseFormula("( (A&B)|!C23)")))
-#		self.assertEquals("(| (& A B) (! C23))", str(self.parseFormula("( (A&B)|!C23)")))
 
 	def test_createBinaryComplexitySixFormula_getConnective(self):
 		self.assertEquals("|", self.parseFormula("( (A&B)|!C23)").getConnective())

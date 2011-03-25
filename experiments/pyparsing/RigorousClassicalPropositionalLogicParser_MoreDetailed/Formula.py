@@ -27,6 +27,8 @@ class UnaryFormula(Formula):
 		self.subformula = subformula
 	def getConnective(self):
 		return self.connective
+	def getSubformulas(self):
+		return [self.subformula]
 	def __str__(self):
 		return str(self.connective) + str(self.subformula)
 
@@ -37,6 +39,8 @@ class BinaryFormula(Formula):
 		self.rightSubformula = rightSubformula
 	def getConnective(self):
 		return self.connective
+	def getSubformulas(self):
+		return [self.leftSubformula, self.rightSubformula]
 	def __str__(self):
 		return "(" + str(self.leftSubformula) + str(self.connective) + str(self.rightSubformula) + ")"
 
