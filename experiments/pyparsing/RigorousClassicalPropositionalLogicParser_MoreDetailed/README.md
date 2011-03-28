@@ -4,6 +4,25 @@ A "Rigorous" Parser for Classical Propositional Logic
 Author: [Adolfo Neto](http://twitter.com/adolfont)
 
 
+Examples of well-formed formulas
+-----------------------------------------------
+
+* A
+* A1
+* B23
+* !A1
+* !!B
+* (A&B)
+* (A1&B22)
+* (A1&!B)
+* (A1->!!B)
+* (A2|B3)
+* !(A2|B3)
+* (B23->(A2->B3))
+
+
+
+
 Motivation
 ----------
 
