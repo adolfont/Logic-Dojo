@@ -22,6 +22,7 @@ Examples of well-formed formulas
 
 
 A (well-formed) formula can be:
+
 * an atomic formula
 * a unary formula
 * a binary formula
@@ -31,6 +32,7 @@ An atomic formula is a letter followed by one or more letters or numbers.
 A unary formula is an unary connective (in our case only "!" representing negation) followed by a formula.
 
 A binary formula is:
+
 * A left parenthesis, "(", followed by
 * A formula, followed by
 * A binary connective ("&" (and, conjunction), "|" (or, disjunction) or "->" (if-then, implication) ), followed by
