@@ -24,15 +24,26 @@ ParserElement.enablePackrat()
 class RigorousClassicalPropositionalLogicParser:
 
 	def __init__(self):
+		self.initializeGroupingSymbols()
+		self.initializeConnectives()
+		self.initializeZeroaryAndAtomicFormulas()
+		self.initializeFormula()
+
+	def initializeZeroaryAndAtomicFormulas(self):
+		self.boolean = Keyword("false") | Keyword("true")
+		self.symbol = Word(alphas, alphanums)
+
+	def initializeGroupingSymbols(self):
 		self.left_parenthesis = Suppress("(")
 		self.right_parenthesis = Suppress(")")
+
+	def initializeConnectives(self):
 		self.implies = Literal("->")
 		self.or_ = Literal("|")
 		self.and_ = Literal("&")
 		self.not_ = Literal("!") | Literal ("~")
-		self.boolean = Keyword("false") | Keyword("true")
-		self.symbol = Word(alphas, alphanums)
 
+	def initializeFormula(self):
 		self.formula = Forward()
 		self.operand = self.boolean | self.symbol
 
@@ -42,6 +53,7 @@ class RigorousClassicalPropositionalLogicParser:
 		self.binaryFormula = Group(self.left_parenthesis + self.formula + self.binaryConnective + self.formula + self.right_parenthesis)
 
 		self.formula << (self.unaryFormula | self.binaryFormula | self.operand)
+
 
 
 ## Should return a ParserResult object
