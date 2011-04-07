@@ -1,46 +1,21 @@
-# An end-to-end test for the analytical tableau prover
+# An end-to-end test for the analytical tableau prover inspired by #GOOS end-to-end test in http://bit.ly/hRn12J
 
-from AnalyticalTableauxProver import *
-from ProblemParser import *
+from ApplicationRunner import *
 import unittest
 
 
-class ApplicationRunnerEndToEndTest:
+class AnalyticalTableauxEndToEndTest(unittest.TestCase):
 
-	def __init__(self):
-		self.prover = AnalyticalTableauxProver()
-		self.parser = ProblemParser()
-
-	def run(self):
-		self.parseProblem()
-		self.buildProof()
-		self.showProof()
-
-	def parseProblem(self):
-		self.problem = self.parser.parseFile("sample.prove")
-
-	def buildProof(self):
-		self.proof = self.prover.buildProof(self.problem)
-
-	def showProof(self):
-		print str(self.proof)
+	def setUp(self):
+		self.applicationRunner = ApplicationRunner()
 
 
+	def testRunProverAndCheckProof(self):
+		self.applicationRunner.runProver()
+		self.assertEquals(None,self.applicationRunner.getProof())
 
 
-#assert problem is not null
-#assert problem has 4 signed formulas
-
-#proof = analyticalTableauProver.buildProof(problem)
-
-#assert proof.isClosed()
-
-#assert proof.toSimpleString() equals to
-#problem.toSimpleString()+ readFile(sample.proof)
-
-
-runner = ApplicationRunnerEndToEndTest()
-runner.run()
-
+if __name__ == '__main__':
+	unittest.main()
 
 
