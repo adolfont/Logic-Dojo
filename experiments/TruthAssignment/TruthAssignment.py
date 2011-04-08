@@ -3,8 +3,12 @@
 
 class TruthAssignment:
 
+	def __init__(self):
+		self.assignments = dict()
+
+
 	def set(self, atom, value):
-		pass
+		self.assignments[atom]=value		
 
 	def get(self, atom):
-		return 1
+		return self.assignments[atom]
