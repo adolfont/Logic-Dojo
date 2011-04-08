@@ -1,5 +1,5 @@
-Truth Assigments in Classical Propositional Logic
-=================================================
+Truth Assignments in Classical Propositional Logic
+==================================================
 
 
 Author: [Adolfo Neto](http://twitter.com/adolfont)
