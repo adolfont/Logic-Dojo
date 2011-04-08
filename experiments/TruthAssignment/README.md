@@ -27,7 +27,7 @@ v: P -> {0, 1}
 
 #### An example of a valuation
 
-Given that P={p1, p2, p3}. A valuation v1 can be defined as:
+Given that P={p1, p2, p3}, a valuation v1 can be defined as:
 
 - v1(p1)=0
 - v1(p2)=1
@@ -36,20 +36,22 @@ Given that P={p1, p2, p3}. A valuation v1 can be defined as:
 ### Second definition
 
 The second definition extends the definition of truth assignments to be functions from the set of formulas (L_LPC)
-to the set of truth-values.
+to the set of truth-values:
 
-The valuation of a non-atomic formula can be obtained form the valuation of the atomic formulas that are its 
-subformulas. For any non-atomic formula P:
+v: L_LPC -> {0, 1}
+
+The valuation of a non-atomic formula can be obtained from the valuation of the atomic formulas which are in its set of
+subformulas. Following this definition, for any formulas P, Q:
 
 - v(!P) = 1 - v(P)
 - v((P&Q)) = 1 if and only if v(P)=1 and v(Q)=1. Otherwise, v((P&Q))=0.
-- v((P|Q)) = 1 if v(P)=1 or v(Q)=1. Otherwise, v((P|Q))=0.
-- v((P->Q)) = 0 if v(P)=1 and v(Q)=0. Otherwise, v((P->Q))=1.
+- v((P|Q)) = 1 if and only if v(P)=1 or v(Q)=1. Otherwise, v((P|Q))=0.
+- v((P->Q)) = 0 if and only if v(P)=1 and v(Q)=0. Otherwise, v((P->Q))=1.
 
 
 #### A second example of a valuation
 
-Given that P={p1, p2, p3}. A valuation v2 can be defined as:
+Given that P={p1, p2, p3}, a valuation v2 can be defined as follows:
 
 - v2(p1)=1
 - v2(p2)=1
